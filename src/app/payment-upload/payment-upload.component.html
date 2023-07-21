@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="upload-container">
+    <h2>Subir Comprobante de Pago</h2>
+    <p>Favor de anexar el comprobante de pago para poder validar su matrícula.</p>
+
+    <input type="file" id="fileInput" (change)="onFileSelected($event)" accept=".pdf,.doc,.docx" style="display: none" />
+    <label for="fileInput" class="upload-button">
+      <i class="fa fa-upload" aria-hidden="true" ></i> Seleccionar archivo
+    </label>
+    <span class="selected-file">{{ selectedFile?.name }}</span>
+    <button *ngIf="selectedFile" class="remove-button" (click)="onRemoveFile()">Quitar archivo</button>
+    <button style="background-color: #ffab40; "class="submit-button" [disabled]="!selectedFile" (click)="onSubmit()">Enviar</button>
+    <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+  </div>
+</div>
+

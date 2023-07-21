@@ -1,0 +1,62 @@
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.upload-container {
+  text-align: center;
+  width: 400px;
+  padding: 40px;
+  background-color: #F0F8FF;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+}
+
+.upload-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #0080FF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.selected-file {
+  display: block;
+  margin: 20px auto;
+}
+
+.remove-button {
+  display: inline-block;
+  padding: 8px 16px;
+  background-color: #FF0000;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.submit-button {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background-color: #0080FF;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.error-message {
+  color: #FF0000;
+  font-size: 14px;
+  margin-top: 10px;
+}

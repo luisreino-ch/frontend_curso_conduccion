@@ -1,0 +1,173 @@
+<div class="img">
+
+
+  <mat-toolbar color="primary">
+    <i class="fa fa-car p-4" aria-hidden="true"> </i>
+    <h1>Curso de conducir </h1>
+    <span class="example-spacer"></span>
+
+  </mat-toolbar>
+
+
+<div class="d-flex justify-content-center align-items-center" style="padding: 30px;" >
+<div class="card p-3" style="width: 800px; ">
+
+  <form [formGroup]="formulario" (ngSubmit)="guardar()">
+    <h1>Formulario de inscripción</h1>
+    <br>
+    <div class="mb-3">
+      <div class="row">
+        <label for="nombres" class="col-4 col-form-label">Nombres:</label>
+        <div class="col-8" >
+          <input id="nombres" type="text" formControlName="nombres" class="form-control" [(ngModel)]="nombres">
+        </div>
+      </div>
+      <div *ngIf="f['nombres'].invalid && (f['nombres'].dirty || f['nombres'].touched)" class="error">
+        <div *ngIf="f['nombres'].errors?.['required']">Los nombres son requeridos.</div>
+        <div *ngIf="f['nombres'].errors?.['pattern']">Ingresa solo letras en los nombres.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="row">
+        <label for="apellidos" class="col-4 col-form-label">Apellidos:</label>
+        <div class="col-8">
+          <input id="apellidos" type="text" formControlName="apellidos" class="form-control" [(ngModel)]="apellidos">
+        </div>
+      </div>
+      <div *ngIf="f['apellidos'].invalid && (f['apellidos'].dirty || f['apellidos'].touched)" class="error">
+        <div *ngIf="f['apellidos'].errors?.['required']">Los apellidos son requeridos.</div>
+        <div *ngIf="f['apellidos'].errors?.['pattern']">Ingresa solo letras en los apellidos.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="row">
+        <label for="cedula" class="col-4 col-form-label">Cédula:</label>
+        <div class="col-8">
+          <input id="cedula" type="text" formControlName="cedula" class="form-control" [(ngModel)]="cedula">
+        </div>
+      </div>
+      <div *ngIf="f['cedula'].invalid && (f['cedula'].dirty || f['cedula'].touched)" class="error">
+        <div *ngIf="f['cedula'].errors?.['required']">La cédula es requerida.</div>
+        <div *ngIf="f['cedula'].errors?.['pattern']">Ingresa una cédula válida.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="row">
+        <label for="fechaNacimiento" class="col-4 col-form-label">Fecha de Nacimiento:</label>
+        <div class="col-8">
+          <input id="fechaNacimiento" type="date" formControlName="fechaNacimiento" required class="form-control" [(ngModel)]="fechaNacimiento">
+        </div>
+      </div>
+      <div *ngIf="f['fechaNacimiento'].invalid && (f['fechaNacimiento'].dirty || f['fechaNacimiento'].touched)" class="error">
+        <div *ngIf="f['fechaNacimiento'].errors?.['required']">La fecha de nacimiento es requerida</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="row">
+        <label for="correoElectronico" class="col-4 col-form-label">Correo Electrónico:</label>
+        <div class="col-8">
+          <input id="correoElectronico" type="email" formControlName="correoElectronico" required class="form-control" [(ngModel)]="correoElectronic">
+        </div>
+      </div>
+      <div *ngIf="f['correoElectronico'].invalid && (f['correoElectronico'].dirty || f['correoElectronico'].touched)" class="error">
+        <div *ngIf="f['correoElectronico'].errors?.['required']">El correo electrónico es requerido.</div>
+        <div *ngIf="f['correoElectronico'].errors?.['email']">Ingresa un correo electrónico válido.</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="col-4 col-form-label">Nivel Académico:</label>
+
+      <div class="form-check-inline"> <!-- Cambiada la clase "form-check" por "form-check-inline" -->
+        <input type="radio" formControlName="nivelAcademico" value="secundaria" (change)="cambiarNivelAcademico('secundaria')" required class="form-check-input" [(ngModel)]="nivelAcademico">
+        <label class="form-check-label">Secundaria</label>
+      </div>
+      <div class="form-check-inline"> <!-- Cambiada la clase "form-check" por "form-check-inline" -->
+        <input type="radio" formControlName="nivelAcademico" value="tercer-nivel" (change)="cambiarNivelAcademico('tercer-nivel')" required class="form-check-input" [(ngModel)]="nivelAcademico">
+        <label class="form-check-label">Tercer Nivel</label>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="row">
+        <label for="tipoSangre" class="col-4 col-form-label">Tipo de Sangre:</label>
+        <div class="col-8">
+          <select id="tipoSangre" [(ngModel)]="tipoSangre" formControlName="tipoSangre" required class="form-control">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="A+">A+</option>
+            <option value="A-">A-</option>
+            <option value="B+">B+</option>
+            <option value="B-">B-</option>
+            <option value="O+">O+</option>
+            <option value="O-">O-</option>
+            <option value="AB+">AB+</option>
+            <option value="AB-">AB-</option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="f['tipoSangre'].invalid && (f['tipoSangre'].dirty || f['tipoSangre'].touched)" class="error">
+        <div *ngIf="f['tipoSangre'].errors?.['required']">La fecha de nacimiento es requerido</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="row">
+        <label for="tipoLicencia" class="col-4 col-form-label">Tipo de Licencia:</label>
+        <div class="col-8">
+          <select id="tipoLicencia" [(ngModel)]="tipoLicencia"  formControlName="tipoLicencia" required class="form-control">
+            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="Tipo A">Tipo A</option>
+            <option value="Tipo B">Tipo B</option>
+            <option value="Tipo C">Tipo C</option>
+          </select>
+        </div>
+      </div>
+      <div *ngIf="f['tipoLicencia'].invalid && (f['tipoLicencia'].dirty || f['tipoLicencia'].touched)" class="error">
+        <div *ngIf="f['tipoLicencia'].errors?.['required']">La fecha de nacimiento es requerido</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="row">
+        <label for="examenPsicometrico" class="col-4 col-form-label">Examen Psicométrico:</label>
+        <div class="col-8">
+          <input id="examenPsicometrico" type="checkbox" formControlName="examenPsicometrico" (change)="cambiarExamenPsicometrico()" class="form-check-input">
+        </div>
+      </div>
+      <div *ngIf="f['examenPsicometrico'].invalid && (f['examenPsicometrico'].dirty || f['examenPsicometrico'].touched)" class="error">
+        <div *ngIf="f['examenPsicometrico'].errors?.['required']"></div>
+      </div>
+    </div>
+
+    <div *ngIf="mostrarCampoArchivo" class="mb-3">
+      <div class="row">
+        <label for="archivo" class="col-4 col-form-label">Cargar Archivo:</label>
+        <div class="col-8">
+          <input id="archivo" type="file" formControlName="archivo" class="form-control" [(ngModel)]="fotoExamenPs"  >
+        </div>
+      </div>
+      <div *ngIf="f['archivo'].invalid && (f['archivo'].dirty || f['archivo'].touched)" class="error">
+        <div *ngIf="f['archivo'].errors?.['required']">Se requiere cargar una imagen</div>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <div class="form-check">
+        <form [formGroup]="formulario">
+          <ngx-recaptcha2 #captchaElem [siteKey]="siteKey" formControlName="recaptcha " class="form-check-input"></ngx-recaptcha2>
+        </form>
+      </div>
+    </div>
+
+
+    <br><br><br>
+    <button type="submit" style="background-color:#ffab40 ;" [disabled]="formulario.invalid" class="btn " (click)="saveNewUsuarioOnBDD()" >Guardar</button>
+  </form>
+</div>
+</div>
+
+
