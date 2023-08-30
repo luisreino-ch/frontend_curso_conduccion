@@ -16,11 +16,13 @@
           <i class="fa fa-envelope" aria-hidden="true"></i> Email:
         </label>
         <input type="email" id="email" formControlName="email" required>
-
-        <div class="mb-3 text-danger" *ngIf="emailtxt?.errors && loginForm.get('email')?.touched">
-          <p *ngIf="emailtxt?.hasError('required')">Este campo debe tener un email</p>
-          <p *ngIf="emailtxt?.hasError('email')">Ingresa un email válido</p>
+      
+        <div class="mb-3 text-danger" *ngIf="isEmailError()">
+          <p *ngIf="hasRequiredError()">Este campo debe tener un email</p>
+          <p *ngIf="hasEmailFormatError()">Ingresa un email válido</p>
         </div>
+      </div>
+
 
 
       </div>
