@@ -31,12 +31,12 @@ export class FormComponent {
 
   mostrarCampoArchivo: boolean = false;
 
-  constructor(private formBuilder: FormBuilder, public UsuarioService: UsuarioService) {
+  constructor(private formBuilder: FormBuilder, public UsuarioService: UsuarioService, private http:HttpClient) {
     this.formulario = this.formBuilder.group({
       nombres: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
       apellidos: ['', [Validators.required, Validators.pattern('^[a-zA-Z ]+$')]],
-      cedula: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-      fechaNacimiento: ['', Validators.required],
+      cedula: ['', [Validators.required, Validators.pattern('^[0-9]{10}$'), this.ecuadorianCedulaValidator()]],
+      fechaNacimiento: ['', [Validators.required, this.legalAgeValidator()]], // Corrección aquí
       correoElectronico: ['', [Validators.required, Validators.email]],
       nivelAcademico: ['secundaria', Validators.required],
       tipoSangre: ['', Validators.required],
