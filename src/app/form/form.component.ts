@@ -64,6 +64,24 @@ export class FormComponent {
     };
   }
 
+
+  ecuadorianCedulaValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (control.value) {
+        const cedula = control.value.toString();
+        if (cedula.length === 10) {
+          const provinceCode = parseInt(cedula.substr(0, 2));
+          if (provinceCode >= 1 && provinceCode <= 24) {
+            // Additional checks based on province codes if needed
+            return null; // Valid cédula
+          }
+        }
+        return { 'invalidEcuadorianCedula': true };
+      }
+      return null;
+    };
+  }
+
   async saveNewUsuarioOnBDD(){
     try{
       await this.UsuarioService.saveUsuario(this.buildAndGetNewUsuarioObject());
