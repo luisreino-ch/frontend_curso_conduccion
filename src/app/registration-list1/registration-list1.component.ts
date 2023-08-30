@@ -1,11 +1,6 @@
 
 
-import { User } from './../models/register.model';
-import { Component, ViewChild,OnInit } from '@angular/core';
-import{MatTableDataSource} from '@angular/material/table';
-import { MatSort } from '@angular/material/sort';
-import { MatPaginator } from '@angular/material/paginator';
-import { ApiService } from './../services/api.service';
+import { Component,OnInit } from '@angular/core';
 
 import { UsuarioService} from '../services/usuario.service';
 import { Router } from '@angular/router';
@@ -17,32 +12,46 @@ import { Router } from '@angular/router';
 })
 export class RegistrationList1Component implements OnInit {
 
-  public usuarios:any;
+  public usuarios: any[] = [];
 
 
 
   constructor(
-    public UsuariosService : UsuarioService,
-    public router : Router){
+    public UsuariosService: UsuarioService,
+    public router: Router,
 
-  }
+
+  ) {}
 
   ngOnInit(): void {
     this.cargarUsuarios();
   }
 
-  redirectToDatosUsuario(idusuario: number){
-    this.router.navigate(['/mostrarUsuario', {idusuario:idusuario}]);
+
+
+
+  cargarUsuarios() {
+    this.UsuariosService.getUsers().then(data => {
+      this.usuarios = data as any[];
+    });
   }
 
-  cargarUsuarios(){
-    this.UsuariosService.getUsers().then(data =>{
-      this.usuarios = data;
-    })
+
+  eliminarUsuario(id: number) {
+    this.UsuariosService.deleteUsuario(id)
+      .then(() => {
+        console.log('Usuario eliminado exitosamente');
+        this.cargarUsuarios(); // Recargar la lista de usuarios después de la eliminación
+      })
+      .catch((error) => {
+        console.error('Error al eliminar el usuario:', error);
+      });
   }
 
-  
 
+  redirectToDatosUsuario(idusuarios: number){
+    this.router.navigate(['/update', {idusuarios:idusuarios}]);
+  }
 
 
 }
