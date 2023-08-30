@@ -3,10 +3,12 @@
   <i class="fa fa-car p-4" aria-hidden="true"> </i>
   <h1>Curso de conducir </h1>
   <span class="example-spacer"></span>
-  <button  routerLink="/login" mat-raised-button color="accent" >
+  <button routerLink="/login" mat-raised-button color="accent" >
     Salir
   </button>
 </mat-toolbar>
+
+
 
 <div style="height:100% " class="mx-5 mt-4">
 
@@ -22,8 +24,9 @@
             <div class="card">
                 <div class="card-body text-center">
                     <span class="titulo">LISTADO</span>
-                    
+
                     <table *ngIf="usuarios.length > 0" class="table table-striped mt-3">
+                      <caption>Tabla de Usuarios</caption>
                         <thead>
                           <tr>
                             <th scope="col">#</th>
@@ -35,9 +38,9 @@
                             <th scope="col">Nivel Académico</th>
                             <th scope="col">Tipo de sangre</th>
                             <th scope="col">Tipo de licencia</th>
-                           
-                            <th scope="col">hh </th>
-                            
+
+                            <th scope="col"> Examen Psicométrico</th>
+
                             <th scope="col"></th>
                           </tr>
                         </thead>
@@ -52,22 +55,48 @@
                             <td>{{ usuario.nivelAcademico }}</td>
                             <td>{{ usuario.tipoSangre }}</td>
                             <td>{{ usuario.tipoLicencia }}</td>
-                            <td><button mat-icon-button  class="mx-2" color="accent"><i class="fa fa-picture-o"
-                              aria-hidden="true"></i></button><!-- {{ usuario.fotoExamenPs }} --></td>
 
                             <td>
-                               <!--  <i [routerLink]="['/editar', usuario._id]" class=" text-primary">apro</i>
-                                -
-                                <i [routerLink]="['/editar', usuario._id]" class=" text-primary">X</i> -->
 
-                                <!-- <i (click)="eliminarCarro(carro._id)" class=" text-danger">Eliminar</i> -->
-                                <button mat-icon-button  class="mx-2" color="warn"><i class="fa fa-times-circle-o"
-                                  aria-hidden="true"></i></button>
-                              <!-- <button mat-icon-button class="mx-2" color="accent"><i class="fa fa-pencil"
-                                  aria-hidden="true"></i></button> -->
-                                <button  mat-icon-button color="primary"><i class="fa fa-chevron-circle-down"
-                                  aria-hidden="true"></i></button>
-                              </td>
+                              <button mat-icon-button type="button" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal-' + usuario.idusuarios" class="mx-2" color="accent">
+                                <i class="fa fa-picture-o" aria-hidden="true"> </i>
+                              </button>
+                              
+
+
+                              <!-- Modal -->
+                              <div class="modal fade" [id]="'exampleModal-' + usuario.idusuarios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                  <div class="modal-content">
+                                    <div class="modal-header">
+                                      <h1 class="modal-title fs-5" id="exampleModalLabel">Examen Psicométrico</h1>
+                                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                      <img [src]="usuario.fotoExamenPs" alt="Foto Examen Psicológico" />
+                                    </div>
+                                    <div class="modal-footer">
+                                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+
+                            </td>
+
+
+                            <td>
+                              <button mat-icon-button class="mx-2" color="warn" (click)="eliminarUsuario(usuario.idusuarios)">
+                                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+                              </button>
+
+                              <button  mat-icon-button color="primary"  (click)="redirectToDatosUsuario(usuario.idusuarios)"><i class="fa fa-chevron-circle-down"
+                                aria-hidden="true"></i>
+                              </button>
+                            </td>
+
                           </tr>
                         </tbody>
                       </table>
@@ -80,6 +109,16 @@
 
 
 </div>
+
+
+
+
+
+
+
+
+
+
 
 
 
