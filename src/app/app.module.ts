@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -24,6 +24,8 @@ import { FormComponent } from './form/form.component';
 import { PaymentUploadComponent } from './payment-upload/payment-upload.component';
 
 import { NgxCaptchaModule } from 'ngx-captcha';
+import { UpdateComponent } from './update/update.component';
+
 
 
 
@@ -34,7 +36,9 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     RegistrationList2Component,
     LoginComponent,
     FormComponent,
-    PaymentUploadComponent
+    PaymentUploadComponent,
+    UpdateComponent
+
   ],
   imports: [
     BrowserModule,
@@ -51,6 +55,7 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     HttpClientModule,
     MatInputModule,
     NgxCaptchaModule,
+    FormsModule
 
   ],
   providers: [],
