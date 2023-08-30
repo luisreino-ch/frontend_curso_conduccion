@@ -25,15 +25,17 @@
 
 
 
-      </div>
+            </div>
       <div class="form-group">
         <label for="password">
           <i class="fa fa-key" aria-hidden="true"></i> Contraseña:
         </label>
         <input type="password" id="password" formControlName="password" required>
-        <div class="mb-3 text-danger" *ngIf="contratxt?.errors && loginForm.get('password')?.touched">
-          <p *ngIf="contratxt?.hasError('required')">Este campo debe tener una contraseña</p>
+        <div class="mb-3 text-danger" *ngIf="isPasswordError()">
+          <p *ngIf="hasRequiredError()">Este campo debe tener una contraseña</p>
         </div>
+      </div>
+
       </div>
       <button routerLink="/list1" [disabled]="loginForm.invalid" style="background-color: #ffab40; " type="submit" >Iniciar sesión</button>
     </form>
