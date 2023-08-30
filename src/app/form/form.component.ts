@@ -22,21 +22,7 @@ export class FormComponent {
   public imagenPago!: File;
   public id!: number;
 
-  /* CREATE TABLE `cursoconduccion`.`usuarios` (
-  `idusuarios` INT NOT NULL AUTO_INCREMENT,
-  `nombres` VARCHAR(45) NULL,
-  `apellidos` VARCHAR(45) NULL,
-  `cedula` VARCHAR(45) NULL,
-  `fechaNacimiento` DATE NULL,
-  `correoElectronic` VARCHAR(45) NULL,
-  `nivelAcademico` VARCHAR(45) NULL,
-  `tipoSangre` VARCHAR(45) NULL,
-  `tipoLicencia` VARCHAR(45) NULL,
-  `fotoExamenPs` LONGBLOB NULL,
-  `imagenPago` LONGBLOB NULL,
-  `estado` TINYINT NULL,
-  PRIMARY KEY (`idusuarios`));
- */
+  
 
 
   protected formulario: FormGroup;
@@ -58,6 +44,24 @@ export class FormComponent {
       examenPsicometrico: ['', Validators.requiredTrue],
       archivo: ['', Validators.required]
     });
+  }
+
+  legalAgeValidator(): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      if (control.value) {
+        const fechaNacimiento = new Date(control.value);
+        fechaNacimiento.setHours(0, 0, 0, 0); // Establecer la hora a medianoche
+        const hoy = new Date();
+        const fechaMayorEdad = new Date(hoy.getFullYear() - 18, hoy.getMonth(), hoy.getDate());
+        fechaMayorEdad.setHours(0, 0, 0, 0); // Establecer la hora a medianoche
+  
+        if (fechaNacimiento > fechaMayorEdad) {
+          return { 'menorDeEdad': true };
+        }
+      }
+  
+      return null;
+    };
   }
 
   async saveNewUsuarioOnBDD(){
