@@ -82,12 +82,13 @@ export class FormComponent {
     };
   }
 
-  async saveNewUsuarioOnBDD(){
-    try{
-      await this.UsuarioService.saveUsuario(this.buildAndGetNewUsuarioObject());
-      console.log("El usuario ha sido registrado con éxito");
-    }catch(error){
-      console.log(error);
+  async saveNewUsuarioOnBDD() {
+    try {
+        await this.UsuarioService.saveUsuario(this.buildAndGetNewUsuarioObject());
+        alert("El usuario ha sido registrado con éxito");
+    } catch (error) {
+        console.error(error);
+        alert("Ha ocurrido un error al registrar al usuario");
     }
   }
 
