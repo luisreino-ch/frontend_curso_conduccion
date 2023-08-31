@@ -82,7 +82,19 @@ export class UsuarioService {
     });
   }
 
-
+  deleteUsuario(id: number) {
+    return new Promise((resolve, reject) => {
+      this.http.delete(this.url + 'usuario/delete/' + id).subscribe({
+        next: (data) => {
+          resolve(data);
+        },
+        error: (err) => {
+          console.log(err);
+          reject(err);
+        }
+      });
+    });
+  }
 
 
 
