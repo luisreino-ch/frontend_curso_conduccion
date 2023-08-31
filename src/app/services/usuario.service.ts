@@ -39,6 +39,19 @@ export class UsuarioService {
     });
   }
 
+  getUsers1(){
+    return new Promise(resolve => {
+      this.http.get(this.url+'usuarios1').subscribe({
+        next: (data) => {
+          resolve(data);
+        },
+        error: (err)=> {
+          console.log(err);
+        }
+      });
+    });
+  }
+
 
 
   getUserById(id: number){
@@ -55,6 +68,33 @@ export class UsuarioService {
   }
 
 
+  updateUsuario(id: number, usuario: any) {
+    return new Promise((resolve, reject) => {
+      this.http.put(this.url + 'usuario/update/' + id, usuario).subscribe({
+        next: (data) => {
+          resolve(data);
+        },
+        error: (err) => {
+          console.log(err);
+          reject(err);
+        }
+      });
+    });
+  }
+
+  deleteUsuario(id: number) {
+    return new Promise((resolve, reject) => {
+      this.http.delete(this.url + 'usuario/delete/' + id).subscribe({
+        next: (data) => {
+          resolve(data);
+        },
+        error: (err) => {
+          console.log(err);
+          reject(err);
+        }
+      });
+    });
+  }
 
 
 
