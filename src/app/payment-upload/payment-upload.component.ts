@@ -23,7 +23,6 @@ export class PaymentUploadComponent {
   onSubmit() {
     if (!this.selectedFile) {
       this.errorMessage = 'Por favor, agregue el archivo antes de enviar.';
-      return;
     }
   }
 }
