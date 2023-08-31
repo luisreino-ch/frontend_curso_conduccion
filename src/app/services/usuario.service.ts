@@ -68,6 +68,21 @@ export class UsuarioService {
   }
 
 
+  updateUsuario(id: number, usuario: any) {
+    return new Promise((resolve, reject) => {
+      this.http.put(this.url + 'usuario/update/' + id, usuario).subscribe({
+        next: (data) => {
+          resolve(data);
+        },
+        error: (err) => {
+          console.log(err);
+          reject(err);
+        }
+      });
+    });
+  }
+
+
 
 
 
