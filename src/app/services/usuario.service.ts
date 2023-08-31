@@ -39,6 +39,19 @@ export class UsuarioService {
     });
   }
 
+  getUsers1(){
+    return new Promise(resolve => {
+      this.http.get(this.url+'usuarios1').subscribe({
+        next: (data) => {
+          resolve(data);
+        },
+        error: (err)=> {
+          console.log(err);
+        }
+      });
+    });
+  }
+
 
 
   getUserById(id: number){
