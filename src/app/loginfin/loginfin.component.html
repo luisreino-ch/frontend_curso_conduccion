@@ -10,11 +10,9 @@
     <h2>Iniciar sesión</h2>
 
     <div class="form-group">
-
       <label for="usuario">
         <i class="fa fa-envelope" aria-hidden="true"></i>Usuario:
       </label>
-
       <input [(ngModel)]="user.username" type="usuario" id="usuario" formControlName="usuario" required>
       <div class="mb-3 text-danger" *ngIf="usuariotxt?.errors && loginForm.get('usuario')?.touched">
         <p *ngIf="usuariotxt?.hasError('required')">Este campo debe tener un usuario</p>
@@ -22,7 +20,6 @@
         <p *ngIf="usuariotxt?.hasError('maxlength')">El usuario debe tener al máximo 10 caracteres</p>
       </div>
     </div>
-
     <div class="form-group">
 
       <label for="password">
