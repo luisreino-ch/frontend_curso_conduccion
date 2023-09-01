@@ -1,0 +1,21 @@
+.img-carousel {
+    width: 800px; /* Establece el ancho deseado */
+    height: 650px; /* Establece la altura deseada */
+    object-fit: cover; /* Asegura que la imagen cubra completamente el contenedor */
+  }
+  /* Estilos personalizados para el navbar */
+.navbar {
+    font-size: 1.25rem; /* Tamaño de letra mediano */
+  }
+  
+  .navbar-nav .nav-link {
+    padding: 0.5rem 1rem; /* Espaciado de enlaces */
+  }
+  
+  /* Estilos para el contenido */
+  .bg-custom {
+    background-color: #f8f9fa; /* Color de fondo personalizado */
+  }
+  .bg-custom {
+    background-color: #f8f9fa; /* Color de fondo personalizado */
+  }  
