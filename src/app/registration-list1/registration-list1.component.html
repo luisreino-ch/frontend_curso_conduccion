@@ -7,24 +7,18 @@
     Salir
   </button>
 </mat-toolbar>
-
-
-
 <div style="height:100% " class="mx-5 mt-4">
 
   <div class="d-flex justify-content-between">
     <button routerLink="/list2" mat-raised-button color="accent"><i class="fa fa-arrow-right" aria-hidden="true"></i>
       </button>
-
   </div>
-
   <div class="container mt-5">
     <div class="row">
         <div >
             <div class="card">
                 <div class="card-body text-center">
                     <span class="titulo">LISTADO</span>
-
                     <table *ngIf="usuarios.length > 0" class="table table-striped mt-3">
                       <caption>Tabla de Usuarios</caption>
                         <thead>
@@ -38,9 +32,7 @@
                             <th scope="col">Nivel Académico</th>
                             <th scope="col">Tipo de sangre</th>
                             <th scope="col">Tipo de licencia</th>
-
                             <th scope="col"> Examen Psicométrico</th>
-
                             <th scope="col"></th>
                           </tr>
                         </thead>
@@ -55,9 +47,7 @@
                             <td>{{ usuario.nivelAcademico }}</td>
                             <td>{{ usuario.tipoSangre }}</td>
                             <td>{{ usuario.tipoLicencia }}</td>
-
                             <td>
-
                               <button mat-icon-button type="button" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal-' + usuario.idusuarios" class="mx-2" color="accent">
                                 <i class="fa fa-picture-o" aria-hidden="true"> </i>
                               </button>
@@ -77,16 +67,11 @@
                                     </div>
                                     <div class="modal-footer">
                                       <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-
                                     </div>
                                   </div>
                                 </div>
                               </div>
-
-
                             </td>
-
-
                             <td>
                               <button mat-icon-button class="mx-2" color="warn" (click)="eliminarUsuario(usuario.idusuarios)">
                                 <i class="fa fa-times-circle-o" aria-hidden="true"></i>
@@ -96,7 +81,6 @@
                                 aria-hidden="true"></i>
                               </button>
                             </td>
-
                           </tr>
                         </tbody>
                       </table>
