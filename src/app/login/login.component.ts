@@ -18,7 +18,6 @@ export class LoginComponent implements OnInit {
       password: ['', Validators.required]
     });
   }
-
   get emailtxt(){
     return this.loginForm.get('email');
   }
