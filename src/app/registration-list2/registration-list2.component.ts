@@ -49,6 +49,12 @@ export class RegistrationList2Component implements OnInit {
   }
 
 
+    logOut(){
+    localStorage.removeItem('token');
+    this.router.navigate(['loginfin']);
+  }
+
+
 
 
 }
