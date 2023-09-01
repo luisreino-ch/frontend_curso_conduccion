@@ -9,16 +9,13 @@ import { FormBuilder, FormGroup,FormControl, Validators } from '@angular/forms';
 export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
-
   constructor(private formBuilder: FormBuilder) {}
-
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
   }
-
   get emailtxt(){
     return this.loginForm.get('email');
   }
@@ -35,11 +32,8 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
     const email = this.loginForm.value.email;
     const password = this.loginForm.value.password;
-
-    // Aquí puedes agregar la lógica para validar las credenciales de inicio de sesión
     console.log('Email:', email);
     console.log('Contraseña:', password);
   }

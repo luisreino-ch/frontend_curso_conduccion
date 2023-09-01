@@ -53,5 +53,10 @@ export class RegistrationList1Component implements OnInit {
     this.router.navigate(['/update', {idusuarios:idusuarios}]);
   }
 
+  logOut(){
+    localStorage.removeItem('token');
+    this.router.navigate(['loginfin']);
+  }
+
 
 }
