@@ -10,7 +10,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './guards/auth.guard';
-
 const routes: Routes = [
   { path: '', component: HomeComponent }, 
   { path: 'list1', component: RegistrationList1Component, canActivate: [AuthGuard]},
@@ -19,9 +18,7 @@ const routes: Routes = [
   { path: 'form', component:  FormComponent},
   { path: 'payment', component:  PaymentUploadComponent},
   {path:'update', component: UpdateComponent, canActivate: [AuthGuard]}
-
 ];
-
 @NgModule({
   imports: [RouterModule.forRoot(routes), HttpClientModule,MatToolbarModule,],
   exports: [RouterModule]
